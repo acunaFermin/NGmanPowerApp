@@ -6,8 +6,8 @@
     baseChart
     width="400"
     height="400"
-    [datasets]="lineChartData"
-    [labels]="lineChartLabels"
+    [datasets]="[{ data: yAxisAcum, label: 'Series A' }]"
+    [labels]="xAxis"
     [options]="lineChartOptions"
     [colors]="lineChartColors"
     [legend]="lineChartLegend"

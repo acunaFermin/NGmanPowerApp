@@ -1,15 +1,11 @@
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 import { ChartDataSets } from 'chart.js';
 
 @Injectable({
   providedIn: 'root',
 })
 export class GraficaService {
-  constructor() {
-    console.log('servicio activado');
-
-    console.log(this.GenerateCurve(1000, 100, 100, 50, 0.4, 0.01, 10));
-  }
+  constructor() {}
 
   // let HH = 10000;
   // let n = 20;     /*cantidad de intervalos */
@@ -31,6 +27,10 @@ export class GraficaService {
   ejeX: string[] = [];
   ejeYgauss: number[] = [];
   ejeYacum: number[] = [];
+
+  ejeX$ = new EventEmitter<string[]>();
+  ejeYgauss$ = new EventEmitter<number[]>();
+  ejeYacum$ = new EventEmitter<number[]>();
 
   GenerateCurve(
     HH: number,
@@ -65,6 +65,7 @@ export class GraficaService {
       yAxisAcumm: this.ejeYacum,
     };
   }
+
   /************************/
   suma = 0;
   resultado = [0];

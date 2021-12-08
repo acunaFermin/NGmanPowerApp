@@ -11,26 +11,7 @@ import { GraficaService } from '../../services/grafica.service';
 export class GaussComponent implements OnInit {
   constructor(private graficaService: GraficaService) {}
 
-  ngOnInit(): void {
-    let { xAxis, yAxisGauss, yAxisAcumm } = this.graficaService.GenerateCurve(
-      1000,
-      100,
-      100,
-      50,
-      0.4,
-      0.01,
-      10
-    );
-
-    this.lineChartData = [{ data: yAxisGauss, label: 'Series A' }];
-
-    this.lineChartLabels = xAxis;
-  }
-
-  public lineChartData: ChartDataSets[] = [
-    { data: [65, 59, 180, 81, 56, 55, 40], label: 'Series A' },
-  ];
-  public lineChartLabels: Label[] = [
+  xAxis: string[] = [
     'January',
     'February',
     'March',
@@ -39,8 +20,23 @@ export class GaussComponent implements OnInit {
     'June',
     'July',
   ];
+  yAxisGauss: number[] = [65, 59, 180, 81, 56, 55, 40];
+
+  ngOnInit(): void {
+    this.graficaService.ejeX$.subscribe((ejeX) => {
+      this.xAxis = ejeX;
+    });
+
+    this.graficaService.ejeYgauss$.subscribe((ejeY) => {
+      this.yAxisGauss = ejeY;
+    });
+  }
+
   public lineChartOptions: ChartOptions = {
     responsive: true,
+    animation: {
+      duration: 0,
+    },
   };
   public lineChartColors: Color[] = [
     {
