@@ -27,6 +27,16 @@ export class MenuComponent implements OnInit {
   S1: number = 0.01;
   gaussPosition: number = 10;
 
+  // this.graficaService.GenerateCurve(
+  //   10000,
+  //   100,
+  //   100,
+  //   50,
+  //   0.4,
+  //   0.01,
+  //   10
+  // );
+
   generateNewGraph() {
     this.graficaService.GenerateCurve(
       this.manPowerHours,

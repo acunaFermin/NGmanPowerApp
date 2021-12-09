@@ -9,7 +9,10 @@ import { GraficaService } from '../../services/grafica.service';
   styles: [],
 })
 export class GaussComponent implements OnInit {
-  constructor(private graficaService: GraficaService) {}
+  constructor(private graficaService: GraficaService) {
+    this.graficaService.GenerateCurve(10000, 100, 100, 50, 0.4, 0.01, 10);
+    this.drawNewCurve();
+  }
 
   xAxis: string[] = [
     'January',
