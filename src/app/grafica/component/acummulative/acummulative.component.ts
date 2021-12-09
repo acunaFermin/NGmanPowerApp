@@ -44,9 +44,9 @@ export class AcummulativeComponent implements OnInit {
 
   public lineChartOptions: ChartOptions = {
     responsive: true,
-    // animation: {
-    //   duration: 0,
-    // },
+    animation: {
+      duration: 0,
+    },
     scales: {
       yAxes: [
         {
