@@ -12,18 +12,8 @@ export class MenuComponent implements OnInit {
   ngOnInit(): void {}
 
   generateNewGraph() {
-    let { xAxis, yAxisGauss, yAxisAcumm } = this.graficaService.GenerateCurve(
-      10000,
-      1000,
-      100,
-      50,
-      0.4,
-      0.01,
-      10
-    );
+    this.graficaService.GenerateCurve(10000, 1000, 100, 50, 0.4, 0.01, 10);
 
-    this.graficaService.ejeX$.emit(xAxis);
-    this.graficaService.ejeYgauss$.emit(yAxisGauss);
-    this.graficaService.ejeYacum$.emit(yAxisAcumm);
+    this.graficaService.drawNewCurve$.emit();
   }
 }

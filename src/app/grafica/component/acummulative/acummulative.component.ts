@@ -11,40 +11,39 @@ import { GraficaService } from '../../services/grafica.service';
 export class AcummulativeComponent implements OnInit {
   constructor(private graficaService: GraficaService) {}
 
-  xAxis: string[] = [
-    'January',
-    'February',
-    'March',
-    'April',
-    'May',
-    'June',
-    'July',
-  ];
-  yAxisAcum: number[] = [65, 59, 180, 81, 56, 55, 40];
+  // xAxis: string[] = [
+  //   'January',
+  //   'February',
+  //   'March',
+  //   'April',
+  //   'May',
+  //   'June',
+  //   'July',
+  // ];
+  // yAxisAcum: number[] = [65, 59, 180, 81, 56, 55, 40];
 
   ngOnInit(): void {
-    this.graficaService.ejeX$.subscribe((ejeX) => {
-      this.xAxis = ejeX;
-    });
-
-    this.graficaService.ejeYacum$.subscribe((ejeY) => {
-      this.yAxisAcum = ejeY;
-    });
+    // this.graficaService.ejeX$.subscribe((ejeX) => {
+    //   this.xAxis = ejeX;
+    // });
+    // this.graficaService.ejeYacum$.subscribe((ejeY) => {
+    //   this.yAxisAcum = ejeY;
+    // });
   }
 
-  public lineChartOptions: ChartOptions = {
-    responsive: true,
-    animation: {
-      duration: 0,
-    },
-  };
-  public lineChartColors: Color[] = [
-    {
-      borderColor: 'black',
-      backgroundColor: 'rgba(255,0,0,0.3)',
-    },
-  ];
+  // public lineChartOptions: ChartOptions = {
+  //   responsive: true,
+  //   animation: {
+  //     duration: 0,
+  //   },
+  // };
+  // public lineChartColors: Color[] = [
+  //   {
+  //     borderColor: 'black',
+  //     backgroundColor: 'rgba(255,0,0,0.3)',
+  //   },
+  // ];
 
-  public lineChartLegend = true;
-  public lineChartPlugins = [];
+  // public lineChartLegend = true;
+  // public lineChartPlugins = [];
 }

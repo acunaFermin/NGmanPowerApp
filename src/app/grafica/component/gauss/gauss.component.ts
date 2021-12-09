@@ -20,16 +20,25 @@ export class GaussComponent implements OnInit {
     'June',
     'July',
   ];
+
   yAxisGauss: number[] = [65, 59, 180, 81, 56, 55, 40];
 
-  ngOnInit(): void {
-    this.graficaService.ejeX$.subscribe((ejeX) => {
-      this.xAxis = ejeX;
-    });
+  manPowerHours: number = 0;
+  timeIntervals: number = 0;
 
-    this.graficaService.ejeYgauss$.subscribe((ejeY) => {
-      this.yAxisGauss = ejeY;
+  ngOnInit(): void {
+    this.graficaService.drawNewCurve$.subscribe(() => {
+      this.drawNewCurve();
     });
+  }
+
+  drawNewCurve() {
+    let { xAxis, yAxisGauss, yAxisAcum, manPowerHours, timeIntervals } =
+      this.graficaService.data4Drawing;
+    this.xAxis = xAxis;
+    this.yAxisGauss = yAxisGauss;
+    this.manPowerHours = manPowerHours;
+    this.timeIntervals = timeIntervals;
   }
 
   public lineChartOptions: ChartOptions = {

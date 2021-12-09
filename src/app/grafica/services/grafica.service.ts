@@ -28,9 +28,15 @@ export class GraficaService {
   ejeYgauss: number[] = [];
   ejeYacum: number[] = [];
 
-  ejeX$ = new EventEmitter<string[]>();
-  ejeYgauss$ = new EventEmitter<number[]>();
-  ejeYacum$ = new EventEmitter<number[]>();
+  data4Drawing = {
+    xAxis: this.ejeX,
+    yAxisGauss: this.ejeYgauss,
+    yAxisAcum: this.ejeYacum,
+    manPowerHours: this.HH,
+    timeIntervals: this.n,
+  };
+
+  drawNewCurve$ = new EventEmitter<void>();
 
   GenerateCurve(
     HH: number,
@@ -50,6 +56,9 @@ export class GraficaService {
     this.S0 = S0;
     this.S1 = S1;
     this.c = c;
+    this.ejeYgauss = [];
+    this.ejeYacum = [];
+    this.ejeX = [];
 
     for (let i = 0; i < n; i++) {
       this.ejeX[i] = `${i}`;
@@ -59,10 +68,12 @@ export class GraficaService {
     this.ejeYgauss = this.gauss;
     this.ejeYacum = this.gaussAcum;
 
-    return {
+    this.data4Drawing = {
       xAxis: this.ejeX,
       yAxisGauss: this.ejeYgauss,
-      yAxisAcumm: this.ejeYacum,
+      yAxisAcum: this.ejeYacum,
+      manPowerHours: this.HH,
+      timeIntervals: this.n,
     };
   }
 
