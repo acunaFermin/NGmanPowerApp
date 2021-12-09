@@ -33,8 +33,9 @@ export class GaussComponent implements OnInit {
   }
 
   drawNewCurve() {
-    let { xAxis, yAxisGauss, yAxisAcum, manPowerHours, timeIntervals } =
+    let { xAxis, yAxisGauss, manPowerHours, timeIntervals } =
       this.graficaService.data4Drawing;
+
     this.xAxis = xAxis;
     this.yAxisGauss = yAxisGauss;
     this.manPowerHours = manPowerHours;
@@ -43,8 +44,20 @@ export class GaussComponent implements OnInit {
 
   public lineChartOptions: ChartOptions = {
     responsive: true,
-    animation: {
-      duration: 0,
+    // animation: {
+    //   duration: 0,
+    // },
+    scales: {
+      yAxes: [
+        {
+          display: true,
+          ticks: {
+            suggestedMin: 0, // minimum will be 0, unless there is a lower value.
+            // OR //
+            beginAtZero: true, // minimum value will be 0.
+          },
+        },
+      ],
     },
   };
   public lineChartColors: Color[] = [
