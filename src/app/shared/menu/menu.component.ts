@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { GraficaService } from '../../grafica/services/grafica.service';
+import * as XLSX from 'xlsx';
+import { saveAs } from 'file-saver';
+
 
 @Component({
   selector: 'app-menu',
@@ -70,4 +73,50 @@ export class MenuComponent implements OnInit {
 
     this.graficaService.drawNewCurve$.emit();
   }
+
+  data = [
+    {
+      "xAxis": "1",
+      "yAxis": "1"
+    },
+    {
+      "xAxis": "1",
+      "yAxis": "1"
+    },
+    {
+      "xAxis": "1",
+      "yAxis": "1"
+    },
+  ]
+
+  downLoad(){
+    console.log('download')
+
+    const worksheet = XLSX.utils.json_to_sheet(this.data)
+
+    const workbook = {
+      Sheets: {
+        'data': worksheet
+      },
+      SheetNames: ['data']
+    }
+
+    const excelBuffer = XLSX.write(workbook, {bookType:'xlsx', type:'array'})
+
+    this.saveAsExcel(excelBuffer, 'data')
+
+
+  };
+
+  saveAsExcel(buffer: any, fileName: string){
+
+    const EXCEL_TYPE = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8';
+    const EXCEL_EXTENSION = '.xlsx';
+
+    const data = new Blob([buffer], {type: EXCEL_TYPE})
+    saveAs(data, fileName+EXCEL_EXTENSION)
+
+  }
+
+  
 }
