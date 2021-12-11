@@ -28,6 +28,7 @@ export class GraficaService {
   ejeYgauss: number[] = [];
   ejeYacum: number[] = [];
 
+
   data4Drawing = {
     xAxis: this.ejeX,
     yAxisGauss: this.ejeYgauss,
@@ -35,6 +36,8 @@ export class GraficaService {
     manPowerHours: this.HH,
     timeIntervals: this.n,
   };
+
+  
 
   drawNewCurve$ = new EventEmitter<void>();
 
@@ -75,6 +78,28 @@ export class GraficaService {
       manPowerHours: this.HH,
       timeIntervals: this.n,
     };
+  }
+
+  data4ExcelGauss = [{}];
+  data4ExcelAcum = [{}];
+
+  downLoadData(){
+
+    this.ejeX.forEach((x, index) => {
+
+      let xlsxRowElementGauss = {
+        "xAxis": `${x}`,
+        "yAxis": `${this.ejeYgauss[index]}`
+      }
+      let xlsxRowElementAcum = {
+        "xAxis": `${x}`,
+        "yAxis": `${this.ejeYacum[index]}`
+      }
+
+      this.data4ExcelGauss.push(xlsxRowElementGauss)
+      this.data4ExcelAcum.push(xlsxRowElementAcum)
+    });
+    
   }
 
   /************************/

@@ -74,25 +74,22 @@ export class MenuComponent implements OnInit {
     this.graficaService.drawNewCurve$.emit();
   }
 
-  data = [
-    {
-      "xAxis": "1",
-      "yAxis": "1"
-    },
-    {
-      "xAxis": "1",
-      "yAxis": "1"
-    },
-    {
-      "xAxis": "1",
-      "yAxis": "1"
-    },
-  ]
+  dataGauss = this.graficaService.data4ExcelGauss;
+  dataAcum = this.graficaService.data4ExcelAcum;
 
-  downLoad(){
-    console.log('download')
+  dl(){
+    this.graficaService.downLoadData();
+    let Data = [this.dataGauss, this.dataAcum];
+    let fileNames = ['gaussGraph','acumGraph']
 
-    const worksheet = XLSX.utils.json_to_sheet(this.data)
+    Data.forEach((data,index) => {
+      this.downLoad(data,fileNames,index)
+    });
+  }
+
+  downLoad(data:any, fileNames:string[],index:number){
+
+    const worksheet = XLSX.utils.json_to_sheet(data)
 
     const workbook = {
       Sheets: {
@@ -103,8 +100,7 @@ export class MenuComponent implements OnInit {
 
     const excelBuffer = XLSX.write(workbook, {bookType:'xlsx', type:'array'})
 
-    this.saveAsExcel(excelBuffer, 'data')
-
+    this.saveAsExcel(excelBuffer, fileNames[index])
 
   };
 
