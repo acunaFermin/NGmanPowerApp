@@ -19,6 +19,37 @@ export class MenuComponent implements OnInit {
   // let S1 = 0.01;  /*0.01* aumenta las HH al comienzo, 0.01 normal, mas de 0.01 y se  levanta la pata izquierda de la campana  */
   // let c = 10;     /*10 izq, 15 centro, 20 derecha*/
 
+  left:string= 'left';
+  center:string= 'center';
+  right:string= 'right';
+  straight:string = 'straight';
+
+  radioBtnWavesSelector(radioSelected: string){
+    
+    if(radioSelected === 'left'){
+      this.gaussShape= 0.4;
+      this.gaussPosition= 10;
+    }
+
+    if(radioSelected === 'center'){
+      this.gaussShape= 0.4;
+      this.gaussPosition= 15;
+    }
+
+    if(radioSelected === 'right'){
+      this.gaussShape= 0.4;
+      this.gaussPosition= 20;
+    }
+
+    if(radioSelected === 'straight'){
+      this.gaussShape= 0;
+      this.gaussPosition= 15;
+    }
+
+    this.generateNewGraph();
+
+  }
+
   manPowerHours: number = 10000;
   timeIntervals: number = 100;
   Ym: number = 100;
@@ -26,16 +57,6 @@ export class MenuComponent implements OnInit {
   gaussShape: number = 0.4;
   S1: number = 0.01;
   gaussPosition: number = 10;
-
-  // this.graficaService.GenerateCurve(
-  //   10000,
-  //   100,
-  //   100,
-  //   50,
-  //   0.4,
-  //   0.01,
-  //   10
-  // );
 
   generateNewGraph() {
     this.graficaService.GenerateCurve(

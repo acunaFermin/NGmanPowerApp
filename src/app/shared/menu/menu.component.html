@@ -27,6 +27,9 @@
 
   <div class="form-check">
     <input
+    [(ngModel)]="left"
+    (ngModelChange)="radioBtnWavesSelector(left)"
+      [value]="left"
       class="form-check-input"
       type="radio"
       name="flexRadioDefault"
@@ -39,6 +42,9 @@
 
   <div class="form-check">
     <input
+    [(ngModel)]="center"
+    (ngModelChange)="radioBtnWavesSelector(center)"
+      [value]="center"
       class="form-check-input"
       type="radio"
       name="flexRadioDefault"
@@ -52,6 +58,9 @@
 
   <div class="form-check">
     <input
+    [(ngModel)]="right"
+    (ngModelChange)="radioBtnWavesSelector(right)"
+      [value]="right"
       class="form-check-input"
       type="radio"
       name="flexRadioDefault"
@@ -64,6 +73,9 @@
 
   <div class="form-check">
     <input
+    [(ngModel)]="straight"
+    (ngModelChange)="radioBtnWavesSelector(straight)"
+      [value]="straight"
       class="form-check-input"
       type="radio"
       name="flexRadioDefault"
