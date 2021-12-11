@@ -25,7 +25,6 @@ export class MenuComponent implements OnInit {
   straight:string = 'straight';
 
   radioBtnWavesSelector(radioSelected: string){
-    
     if(radioSelected === 'left'){
       this.gaussShape= 0.4;
       this.gaussPosition= 10;
@@ -45,7 +44,7 @@ export class MenuComponent implements OnInit {
       this.gaussShape= 0;
       this.gaussPosition= 15;
     }
-
+    
     this.generateNewGraph();
 
   }
