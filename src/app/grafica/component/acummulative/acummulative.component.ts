@@ -51,6 +51,13 @@ export class AcummulativeComponent implements OnInit {
       duration: 0,
     },
     scales: {
+      xAxes: [
+        {
+          gridLines: {
+            color: 'rgba(148,159,177,0.3)',
+          },
+        },
+      ],
       yAxes: [
         {
           display: true,
@@ -59,16 +66,13 @@ export class AcummulativeComponent implements OnInit {
             // OR //
             beginAtZero: true, // minimum value will be 0.
           },
+          gridLines: {
+            color: 'rgba(148,159,177,0.3)',
+          },
         },
       ],
     },
   };
-  public lineChartColors: Color[] = [
-    {
-      borderColor: 'black',
-      backgroundColor: 'rgba(255,0,0,0.3)',
-    },
-  ];
 
   public lineChartLegend = true;
   public lineChartPlugins = [];

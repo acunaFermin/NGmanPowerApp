@@ -1,1 +1,22 @@
 /* You can add global styles to this file, and also import other style files */
+body {
+  background-color: rgba(0, 0, 0, 0.97);
+  color: rgba(255, 255, 255, 0.85);
+  font-family: "Open Sans", sans-serif;
+}
+
+h1,
+h3 {
+  font-family: "Oswald", sans-serif;
+  font-weight: 400;
+}
+
+.form-control {
+  background-color: rgba(255, 255, 255, 0.9) !important;
+}
+
+button {
+  background-color: rgba(255, 255, 255, 0.9) !important;
+  color: rgba(0, 0, 0, 0.9) !important;
+  font-weight: 600 !important;
+}

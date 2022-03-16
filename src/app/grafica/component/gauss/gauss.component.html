@@ -6,10 +6,21 @@
     baseChart
     width="400"
     height="400"
-    [datasets]="[{ data: yAxisGauss, label: 'Series A' }]"
+    [datasets]="[
+      {
+        data: yAxisGauss,
+        label: 'Series A',
+        backgroundColor: 'rgba(13, 110, 253, 0.2)',
+        borderColor: 'rgba(13, 110, 253,1)',
+        pointBackgroundColor: 'rgba(13, 110, 253,1)',
+        pointBorderColor: '#fff',
+        pointHoverBackgroundColor: '#fff',
+        pointHoverBorderColor: 'rgba(13, 110, 253,0.8)',
+        fill: 'origin'
+      }
+    ]"
     [labels]="xAxis"
     [options]="lineChartOptions"
-    [colors]="lineChartColors"
     [legend]="lineChartLegend"
     [chartType]="'line'"
     [plugins]="lineChartPlugins"
